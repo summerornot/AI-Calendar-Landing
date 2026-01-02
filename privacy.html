@@ -6,7 +6,7 @@
   <title>Privacy Policy - Add to Calendar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="logo.svg" type="image/svg+xml">
 </head>
@@ -29,7 +29,7 @@
   <!-- Content -->
   <main class="policy-page">
     <h1>Privacy Policy</h1>
-    <p class="last-updated">Last updated: December 31, 2025</p>
+    <p class="last-updated">Last updated: January 2, 2026</p>
 
     <p>
       Add to Calendar ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains 
@@ -37,15 +37,26 @@
     </p>
 
     <h2>Information We Collect</h2>
-    <p>When you use Add to Calendar, we may collect the following information:</p>
+    <p>When you use Add to Calendar, we collect the following information:</p>
     <ul>
       <li><strong>Selected Text:</strong> When you right-click and choose to create a calendar event, the text you 
-      have selected is sent to our servers for processing. This text is used solely to extract event details 
-      (date, time, location, description) and is not stored permanently.</li>
-      <li><strong>Google Account Information:</strong> We use Google OAuth to authenticate you with Google Calendar. 
-      We only request access to create and manage calendar events. We do not access any other Google account data.</li>
-      <li><strong>Usage Data:</strong> We may collect anonymous usage statistics to improve the extension, such as 
-      the number of events created. This data does not identify you personally.</li>
+      have selected is sent to our servers and third-party AI services for processing. This text is used solely to 
+      extract event details (date, time, location, description). See "Third-Party Services" section for details on 
+      how this data is handled.</li>
+      <li><strong>Google Calendar Access:</strong> We use Google OAuth to authenticate you with Google Calendar. 
+      We only request the <code>calendar.events</code> scope, which allows us to create, read, update, and delete 
+      calendar events. We do not access calendar settings, sharing permissions, or other calendars beyond what's 
+      necessary for event creation.</li>
+      <li><strong>Browser Timezone:</strong> We collect your browser's timezone information to correctly interpret 
+      and schedule events in your local time.</li>
+      <li><strong>Browser Local Storage:</strong> We store the following data locally in your browser:
+        <ul>
+          <li>Event cache (up to 20 recently processed events, expires after 1 hour)</li>
+          <li>Authentication status</li>
+          <li>Pending event details during processing</li>
+        </ul>
+        This data never leaves your device and is automatically cleared when you uninstall the extension.
+      </li>
     </ul>
 
     <h2>How We Use Your Information</h2>
@@ -57,24 +68,98 @@
     </ul>
 
     <h2>Data Storage and Security</h2>
+    <p><strong>Our Servers:</strong></p>
     <p>
-      We do not permanently store the text you select or the events you create. Selected text is processed 
-      in real-time and discarded after event details are extracted. Your Google authentication tokens are 
-      stored securely in your browser's local storage and are never transmitted to our servers.
+      We do not permanently store the text you select or the events you create on our servers. Selected text is 
+      processed in real-time and discarded immediately after event details are extracted.
+    </p>
+    <p><strong>Third-Party Services:</strong></p>
+    <p>
+      Your selected text is sent to third-party services (OpenAI and LangSmith) with automatic privacy protections. 
+      See "Third-Party Services" section for retention policies.
+    </p>
+    <p><strong>Browser Storage:</strong></p>
+    <p>
+      Your Google authentication tokens are stored securely in your browser's local storage and are never transmitted 
+      to our servers or any third-party service. Event cache data is stored locally for up to 1 hour to improve 
+      performance, then automatically deleted.
     </p>
 
     <h2>Third-Party Services</h2>
-    <p>We use the following third-party services:</p>
+    <p>We use the following third-party services to provide our functionality:</p>
+    
+    <h3>Google Calendar API</h3>
+    <p>
+      We use Google Calendar API to create events in your calendar. We only request the <code>calendar.events</code> 
+      permission scope, which allows us to create, read, update, and delete events. We do not access your calendar 
+      settings, sharing permissions, or other Google account data.
+    </p>
+    
+    <h3>OpenAI</h3>
+    <p>
+      We use OpenAI's GPT-3.5-turbo model to process your selected text and extract event details (date, time, 
+      location, title, description). Your selected text is sent to OpenAI's API for processing.
+    </p>
+    <p><strong>OpenAI's Data Handling:</strong></p>
     <ul>
-      <li><strong>Google Calendar API:</strong> To create events in your calendar</li>
-      <li><strong>OpenAI:</strong> To process text and extract event details using AI</li>
+      <li>API data is NOT used to train OpenAI's models</li>
+      <li>Data is retained for 30 days for abuse and misuse monitoring, then deleted</li>
+      <li>See OpenAI's privacy policy: <a href="https://openai.com/policies/privacy-policy" target="_blank">https://openai.com/policies/privacy-policy</a></li>
     </ul>
+    
+    <h3>LangSmith (by LangChain)</h3>
+    <p>
+      We use LangSmith for quality monitoring and improving the accuracy of our AI event extraction.
+    </p>
+    <p><strong>What data is sent to LangSmith:</strong></p>
+    <ul>
+      <li><strong>User Input (Anonymized):</strong> Your selected text is automatically anonymized before being sent. 
+      We redact personally identifiable information (PII) including:
+        <ul>
+          <li>Email addresses → [EMAIL_REDACTED]</li>
+          <li>Phone numbers → [PHONE_REDACTED]</li>
+          <li>Names → [NAME_REDACTED]</li>
+          <li>Street addresses → [ADDRESS_REDACTED]</li>
+          <li>Credit card numbers → [CARD_REDACTED]</li>
+          <li>Social Security Numbers → [SSN_REDACTED]</li>
+        </ul>
+      </li>
+      <li><strong>AI-Extracted Event Details (Not Anonymized):</strong> Event information extracted by our AI 
+      (titles, dates, times, locations, descriptions) is sent without anonymization to help us:
+        <ul>
+          <li>Monitor extraction accuracy</li>
+          <li>Identify and fix errors</li>
+          <li>Improve the product experience</li>
+        </ul>
+      </li>
+    </ul>
+    <p><strong>Data Retention:</strong> LangSmith retains trace data for 14-30 days depending on the plan tier, 
+    then it is automatically deleted.</p>
+    <p><strong>Purpose:</strong> This data is used solely for quality assurance, debugging, and improving the 
+    accuracy of our event extraction AI. It is never sold or used for marketing purposes.</p>
 
+    <h2>Quality Monitoring and Improvement</h2>
+    <p>To ensure our AI provides accurate event extraction, we collect and analyze:</p>
+    <p><strong>What We Monitor:</strong></p>
+    <ul>
+      <li>AI-extracted event details (titles, dates, times, locations, descriptions)</li>
+      <li>Extraction success/failure rates</li>
+      <li>Processing time and performance metrics</li>
+    </ul>
+    <p><strong>What We Don't Monitor:</strong></p>
+    <ul>
+      <li>Your raw selected text (it's anonymized before logging)</li>
+      <li>Your Google Calendar contents</li>
+      <li>Your browsing history</li>
+    </ul>
+    <p><strong>Retention Period:</strong> Quality monitoring data is retained for 14-30 days, then automatically deleted.</p>
+    
     <h2>Your Rights</h2>
     <p>You have the right to:</p>
     <ul>
       <li>Revoke the extension's access to your Google Calendar at any time through your Google Account settings</li>
       <li>Uninstall the extension to stop all data collection</li>
+      <li>Request deletion of your quality monitoring data by contacting us (this will not affect your ability to use the extension)</li>
       <li>Request information about what data we have collected</li>
     </ul>
 
@@ -92,8 +177,8 @@
 
     <h2>Contact Us</h2>
     <p>
-      If you have any questions about this Privacy Policy, please contact us at: 
-      <a href="mailto:shreyabisht08@gmail.com">shreyabisht08@gmail.com</a>
+      If you have any questions about this Privacy Policy, please contact us via the developer 
+      information mentioned in the Chrome extension page.
     </p>
   </main>
 
@@ -108,10 +193,8 @@
         <p class="footer-tagline">Convert text to calendar events in an instant.</p>
       </div>
       <div class="footer-links">
-        <h4>Product</h4>
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Service</a>
-        <a href="mailto:shreyabisht08@gmail.com">Feedback</a>
       </div>
     </div>
     <div class="footer-bottom">

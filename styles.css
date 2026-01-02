@@ -5,13 +5,33 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
   color: #1a1a2e;
   line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'League Spartan', sans-serif;
+  font-family: 'DM Sans', sans-serif;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 /* Header */
@@ -60,27 +80,43 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cta-button {
-  background: #1a1a2e;
+  background: linear-gradient(135deg, #1a1a2e 0%, #2a2a4e 100%);
   color: white;
   padding: 0.6rem 1.2rem;
   border-radius: 6px;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(26, 26, 46, 0.15);
 }
 
 .cta-button:hover {
-  background: #2a2a4e;
+  background: linear-gradient(135deg, #2a2a4e 0%, #3a3a6e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(26, 26, 46, 0.25);
 }
 
 /* Hero */
 .hero {
-  background: #EAECFF;
+  background: linear-gradient(135deg, #EAECFF 0%, #E0E3FF 100%);
   padding: 6rem 2rem;
   min-height: 600px;
   display: flex;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(26, 115, 232, 0.05) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .hero-content {
@@ -90,6 +126,9 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.8s ease-out;
 }
 
 .hero-text h1 {
@@ -121,19 +160,38 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-cta-button {
   display: inline-block;
-  background: #1a1a2e;
+  background: linear-gradient(135deg, #1a1a2e 0%, #2a2a4e 100%);
   color: white;
   padding: 0.9rem 1.8rem;
   border-radius: 8px;
   text-decoration: none;
   font-size: 1rem;
   font-weight: 600;
-  transition: background 0.2s, transform 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(26, 26, 46, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.hero-cta-button:hover::before {
+  left: 100%;
 }
 
 .hero-cta-button:hover {
-  background: #2a2a4e;
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, #2a2a4e 0%, #3a3a6e 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(26, 26, 46, 0.3);
 }
 
 .hero-illustration {
@@ -143,6 +201,69 @@ h1, h2, h3, h4, h5, h6 {
 .hero-logo {
   width: 350px;
   height: 350px;
+  animation: fadeInUp 1s ease-out 0.3s both;
+  filter: drop-shadow(0 10px 30px rgba(26, 115, 232, 0.15));
+  transition: transform 0.3s ease;
+}
+
+.hero-logo:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+/* Social Proof */
+.social-proof {
+  background: white;
+  padding: 2rem 2rem;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.social-proof-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+}
+
+.proof-item {
+  text-align: center;
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.proof-item:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.proof-item:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.proof-item:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.proof-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.proof-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a73e8;
+  margin-bottom: 0.5rem;
+  font-family: 'League Spartan', sans-serif;
+}
+
+.proof-label {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.4;
+  max-width: 200px;
+  margin: 0 auto;
 }
 
 /* Description */
@@ -177,6 +298,26 @@ h1, h2, h3, h4, h5, h6 {
   flex: 1;
   padding: 2rem;
   border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.feature-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.feature-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.feature-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 .feature-blue {
@@ -202,6 +343,14 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.9rem;
 }
 
+.feature-icon {
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
 .feature-icon svg {
   width: 40px;
   height: 40px;
@@ -210,15 +359,31 @@ h1, h2, h3, h4, h5, h6 {
 
 /* CTA Banner */
 .cta-banner {
-  background: #fff8e6;
+  background: linear-gradient(135deg, #fff8e6 0%, #ffe8b3 100%);
   padding: 3rem 2rem;
   margin-top: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 200, 100, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .cta-content {
   max-width: 1200px;
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .cta-banner h2 {
@@ -231,6 +396,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #444;
   font-size: 1rem;
   max-width: 700px;
+  margin: 0 auto;
   line-height: 1.6;
 }
 
@@ -238,7 +404,7 @@ h1, h2, h3, h4, h5, h6 {
 .footer {
   background: #f5f5f5;
   padding: 3rem 2rem 1.5rem;
-  margin-top: 2rem;
+  margin-top: 0;
 }
 
 .footer-content {
