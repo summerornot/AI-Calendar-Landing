@@ -247,13 +247,61 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
 }
 
+/* Carousel Dots */
+.carousel-dots {
+  display: none;
+}
+
+/* Mobile Carousel */
 @media (max-width: 768px) {
+  .social-proof {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 3rem;
+  }
+  
   .social-proof-content {
-    flex-direction: column !important;
-    flex-wrap: nowrap !important;
-    gap: 2rem;
-    align-items: stretch;
-    justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding: 1rem 0.5rem 2rem;
+    margin: 0 -1rem;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+  
+  .social-proof-content::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+  
+  /* Carousel Dots */
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ddd;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .dot.active {
+    width: 24px;
+    border-radius: 4px;
+    background: #1a73e8;
   }
 }
 
@@ -264,13 +312,27 @@ h1, h2, h3, h4, h5, h6 {
   min-width: 150px;
 }
 
+/* Mobile Carousel Items */
 @media (max-width: 768px) {
   .proof-item {
-    flex: none !important;
-    width: 100% !important;
-    min-width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
+    flex: 0 0 85%;
+    min-width: 85%;
+    max-width: 85%;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    background: white;
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin: 0 0.5rem;
+  }
+  
+  .proof-item:first-child {
+    margin-left: 1rem;
+  }
+  
+  .proof-item:last-child {
+    margin-right: 1rem;
   }
 }
 
@@ -573,11 +635,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .social-proof {
-    padding: 1.5rem 1rem;
-  }
-  
-  .proof-item {
-    padding: 1.5rem 1rem;
+    padding: 2rem 1rem;
   }
   
   .proof-icon {
@@ -674,10 +732,6 @@ h1, h2, h3, h4, h5, h6 {
   
   .social-proof {
     padding: 2rem 1.5rem;
-  }
-  
-  .proof-item {
-    padding: 1.5rem 1rem;
   }
   
   .description {
