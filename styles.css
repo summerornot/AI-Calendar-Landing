@@ -557,11 +557,13 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .social-proof-content {
-    gap: 1.5rem;
+    flex-direction: column;
+    gap: 2rem;
   }
   
   .proof-item {
-    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
     padding: 1rem 0.5rem;
   }
   
@@ -659,6 +661,16 @@ h1, h2, h3, h4, h5, h6 {
   
   .social-proof {
     padding: 2rem 1.5rem;
+  }
+  
+  .social-proof-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .proof-item {
+    width: 100%;
+    max-width: 100%;
   }
   
   .description {
