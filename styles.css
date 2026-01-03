@@ -322,7 +322,7 @@ h1, h2, h3, h4, h5, h6 {
     scroll-snap-stop: always;
     background: white;
     border-radius: 12px;
-    padding: 2rem 1.5rem;
+    padding: 3rem 2rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     margin: 0 0.5rem;
   }
