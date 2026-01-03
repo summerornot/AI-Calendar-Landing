@@ -249,9 +249,11 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
   .social-proof-content {
-    flex-direction: column;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
     gap: 2rem;
     align-items: stretch;
+    justify-content: flex-start;
   }
 }
 
@@ -264,10 +266,11 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
   .proof-item {
-    flex: none;
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
+    flex: none !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
   }
 }
 
