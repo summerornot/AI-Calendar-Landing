@@ -270,8 +270,8 @@ h1, h2, h3, h4, h5, h6 {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     gap: 1rem;
-    padding: 1rem 0.5rem 2rem;
-    margin: 0 -1rem;
+    padding: 1rem 0 2rem;
+    margin: 0;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE/Edge */
   }
@@ -315,9 +315,9 @@ h1, h2, h3, h4, h5, h6 {
 /* Mobile Carousel Items */
 @media (max-width: 768px) {
   .proof-item {
-    flex: 0 0 calc(100% - 3rem);
-    min-width: calc(100% - 3rem);
-    max-width: calc(100% - 3rem);
+    flex: 0 0 calc(100% - 4rem);
+    min-width: calc(100% - 4rem);
+    max-width: calc(100% - 4rem);
     scroll-snap-align: center;
     scroll-snap-stop: always;
     background: white;
@@ -328,11 +328,11 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .proof-item:first-child {
-    margin-left: 1.5rem;
+    margin-left: 2rem;
   }
   
   .proof-item:last-child {
-    margin-right: 1.5rem;
+    margin-right: 2rem;
   }
 }
 
