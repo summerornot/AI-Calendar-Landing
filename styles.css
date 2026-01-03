@@ -268,24 +268,27 @@ h1, h2, h3, h4, h5, h6 {
 
 .proof-icon {
   font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   display: block;
+  line-height: 1;
 }
 
 .proof-number {
-  font-size: 1.5rem;
+  font-size: clamp(1.3rem, 3vw, 1.5rem);
   font-weight: 700;
   color: #1a73e8;
   margin-bottom: 0.5rem;
-  font-family: 'League Spartan', sans-serif;
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.2;
 }
 
 .proof-label {
-  font-size: 0.8rem;
+  font-size: clamp(0.8rem, 1.5vw, 0.85rem);
   color: #666;
-  line-height: 1.4;
+  line-height: 1.5;
   max-width: 200px;
   margin: 0 auto;
+  padding: 0 0.5rem;
 }
 
 /* Description */
@@ -558,19 +561,24 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .proof-item {
-    min-width: 100px;
+    min-width: 100%;
+    padding: 1rem 0.5rem;
   }
   
   .proof-icon {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
   }
   
   .proof-number {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
   }
   
   .proof-label {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
+    max-width: 100%;
+    padding: 0 1rem;
   }
   
   .description {
